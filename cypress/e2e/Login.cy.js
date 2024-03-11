@@ -4,6 +4,9 @@ import Login from "../PageObject/Login"
 describe('Login', () => 
 { 
   
+  beforeEach(() => {
+  cy.visit("https://practice.automationtesting.in/my-account/") }) 
+
   afterEach(() => {
   cy.reload() })  
 
@@ -16,7 +19,6 @@ describe('Login', () =>
 it ('Correct username & Password ', () => {
 
 cy.fixture("practiceautomationtesting").then((data)=>{
-cy.visit(data.Web_URL)
 ln.setuserName(data.Email)
 ln.setPassword(data.password)
 ln.Login_button()
@@ -35,7 +37,6 @@ cy.get('.woocommerce-MyAccount-content > :nth-child(1) > a').click();
 it('Incorrect username & Incorrect Password ', () => {
         
 cy.fixture("practiceautomationtesting").then((data)=>{
-cy.visit(data.Web_URL)
 ln.setuserName(data.Incorrect_email)
 ln.setPassword(data.Incorrect_passwords)
 ln.Login_button()
@@ -53,7 +54,6 @@ should('have.text','Error: A user could not be found with this email address.');
  it('Correct username & Empty Password ', () => {
         
   cy.fixture("practiceautomationtesting").then((data)=>{
-  cy.visit(data.Web_URL)
   ln.setuserName(data.Incorrect_email)
   ln.Login_button()
   cy.wait(50)
@@ -69,7 +69,6 @@ should('have.text','Error: A user could not be found with this email address.');
  it('Empty username & Correct Password ', () => {
         
   cy.fixture("practiceautomationtesting").then((data)=>{
-  cy.visit(data.Web_URL)
   ln.setPassword(data.Incorrect_passwords)
   ln.Login_button()
   cy.wait(50)
@@ -87,7 +86,6 @@ should('have.text','Error: A user could not be found with this email address.');
  it('Empty username & Empty Password ', () => {
         
   cy.fixture("practiceautomationtesting").then((data)=>{
-  cy.visit(data.Web_URL)
   ln.Login_button()
   cy.wait(50)
   cy.get('.woocommerce-error > li').
@@ -97,6 +95,22 @@ should('have.text','Error: A user could not be found with this email address.');
             
   })
 
+
+// Case: #007
+
+it('Login handle case sensitive ', () => {
+        
+  cy.fixture("practiceautomationtesting").then((data)=>{
+  ln.setuserName(data.Case_Sensitive_Email)
+  ln.setPassword(data.Case_Sensitive_password)
+  ln.Login_button()
+  cy.wait(50)
+  cy.get('.woocommerce-error > li').
+  should('have.text','Error: The password you entered for the username LUCIFER007@mailinator.com is incorrect. Lost your password?');
+              
+  })
+            
+  })
 
 
   })
