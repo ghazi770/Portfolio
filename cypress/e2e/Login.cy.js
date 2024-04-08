@@ -95,7 +95,6 @@ should('have.text','Error: A user could not be found with this email address.');
             
   })
 
-
 // Case: #007
 
 it('Login handle case sensitive ', () => {
