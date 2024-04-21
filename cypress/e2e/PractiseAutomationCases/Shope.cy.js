@@ -71,7 +71,7 @@ cy.wait(50)
     
     
 
- it ('Correct usern ', () => {
+ it ('Case 1', () => {
 
 //const filter="//*[@id='woocommerce_price_filter-2']/form/div/div[1]/span[1]";  
 

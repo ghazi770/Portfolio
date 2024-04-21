@@ -77,4 +77,5 @@ cy.get('.orderby').select('Sort by price: high to low');
 
 }
 
+
 export default Shope_Page;
