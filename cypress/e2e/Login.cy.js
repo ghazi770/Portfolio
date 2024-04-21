@@ -1,4 +1,4 @@
-import Login from "../PageObject/Login"
+import Login from "../PageObject/Login_Page"
 
 
 describe('Login', () => 
