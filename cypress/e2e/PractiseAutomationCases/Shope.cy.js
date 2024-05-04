@@ -70,6 +70,7 @@ cy.wait(50)
  })  
     
  // Case: #008
+
 it.only ('Add-Basket-view-basket Functionlaity ', () => {
 
 cy.fixture("billingdetail").then((data)=>{
@@ -78,6 +79,8 @@ cy.get('.post-160 > .button').click()
 cy.wait(50)
 cy.get('.added_to_cart').click() 
 cy.get('.checkout-button').click()
+
+// Add billing details and place order
 
 sp.set_firstName(data.Firstname)
 sp.set_lastName(data.Last)
