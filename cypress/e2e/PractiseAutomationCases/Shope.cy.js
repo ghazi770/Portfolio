@@ -62,31 +62,36 @@ cy.wait(50)
     
  
  // Case: #007
-it.only ('Shop-Default-Sorting by Price(High to Low) Functionlaity ', () => {
+it ('Shop-Default-Sorting by Price(High to Low) Functionlaity ', () => {
 
 sp.setsort_High_low();
 cy.wait(50)
                           
  })  
     
-    
+ // Case: #008
+it.only ('Add-Basket-view-basket Functionlaity ', () => {
 
- it ('Case 1', () => {
+cy.fixture("billingdetail").then((data)=>{
 
-//const filter="//*[@id='woocommerce_price_filter-2']/form/div/div[1]/span[1]";  
+cy.get('.post-160 > .button').click()
+cy.wait(50)
+cy.get('.added_to_cart').click() 
+cy.get('.checkout-button').click()
 
-//
-//cy.get('[style="left: 0%;"]').invoke('val','200').trigger("Change");
-  // Set minimum price
-  cy.get('[style="left: 0%;"]').trigger('mousedown', { which: 1 }).trigger('mousemove', 100, 0).trigger('mouseup', { force: true });
+sp.set_firstName(data.Firstname)
+sp.set_lastName(data.Last)
+sp.set_companyName(data.Company)
+sp.set_billingEmail(data.email)
+sp.set_billingPhone(data.Phone)
+sp.set_Billingaddress(data.Address)
+sp.set_BillingCity(data.City)
+sp.set_PostalCode(data.Zip)
+sp.PlaceOrder_button()
 
-// Set maximum price
-cy.get('.ui-state-hover').trigger('mousedown', { which: 1 }).trigger('mousemove', -100, 0).trigger('mouseup', { force: true });
-                  
-       
-                  
-        })
-    
+})
+
+})  
 
 
 })
