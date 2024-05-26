@@ -25,9 +25,9 @@ cy.get("[name='login']").click()
   
 const acc=new Account();
   
-// Case: #002
+// Case: #001
 
-it('My Account- Dashboard ', () => {
+it.only('My Account- Dashboard ', () => {
 
 acc.setlinkorder()
 cy.wait(50)   
