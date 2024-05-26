@@ -16,60 +16,35 @@ cy.get("[name='login']").click()
     
 
  })   
-
-
-
- afterEach(() => {
-    cy.go('back') }) 
-
-  
+ 
 const acc=new Account();
   
-// Case: #001
+it.only('My Account- Test cases', () => {
 
-it.only('My Account- Dashboard ', () => {
-
+// Case: #001 ['My Account- Dashboard ']
 acc.setlinkorder()
-cy.wait(50)   
-                                  
- }) 
- 
-// Case: #003
 
- it('My Account - Download', () => {
+// Case: #002 ['My Account- Orders ']
 
-    acc.setlink_download()
-    cy.wait(200)   
-                                      
-}) 
+cy.wait(100)    
+acc.setlink_download()
 
-// Case: #004
+// Case: #004 ['My Account- Address ']
 
-it('My Account - Address Functionality ', () => {
-
+cy.wait(100)
 acc.setlink_Address()
-cy.wait(50)   
-                                          
-}) 
 
-// Case: #005
+// Case: #005 ['My Account- Account Detail ']  
 
-it('My Account - Account Detail ', () => {
-
+cy.wait(100)
 acc.setlink_AccDeatail()
-cy.wait(50)   
-                                              
-}) 
-                        
-// Case: #006
 
-it('My Account - LogOut ', () => {
+// Case: #006 ['My Account- LogOut ']
 
+cy.wait(100)
 acc.set_logOut()
-cy.wait(50)   
-                                                  
-    }) 
-    
+ }) 
+     
 
 
   })
