@@ -18,7 +18,8 @@ describe('Home', () =>
 it ('Home Page', () => {
 
 home.link_shop()
-cy.wait(50)   
+cy.wait(50)
+
 home.Click_link()
 cy.url().should('eq', 'https://practice.automationtesting.in/product/selenium-ruby/');
 
@@ -40,26 +41,26 @@ cy.get('span[class="cartcontents"]').should('have.text','1 item')
 home.View_basket()
 cy.url().should('eq', 'https://practice.automationtesting.in/basket/');
 
-// Increase quantiy
-
-//const newQuantity = parsedQuantity + 1;
-
-// Set the new quantity
-//cy.get('@quantityInput').clear().type(newQuantity);
-
+//Case12 
+home.add_quantity()
+cy.get('input[name="update_cart"]').click()
+cy.wait(50)
+cy.get('input[title="Qty"]').should('have.value', '5');
 
 // Case: #009 ['Home Page - Arrival Image-Add to Basket items-coupon']
 
 home.apply_coupon()
 
-//cy.get('//*[@id="page-34"]/div/div[1]/ul/li').should('have.text','Coupon "0900-12" does not exist!')
 
 // Case: #010- Currently no way to create coupan
+
+
 
 // Case: #011 ['Home Page - Arrival Image-Add to Bask-Remove item']
 
 home.remove_item()
 cy.get('.cart-empty').should('have.text', '\n\tYour basket is currently empty.')
+
 
 })  
 
