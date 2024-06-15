@@ -13,9 +13,21 @@ class Login{
    cy.get(this.txtPassword).type(password)   
    }
     
-   Login_button(){
-   cy.get(this.btnSubmit).click()
-   }   
+Login_button()
+{
+
+cy.get(this.btnSubmit).click()
+
+}   
    
-   }
-   export default Login;
+// Click on SignOut
+
+Sign_out()
+{
+cy.contains('Sign out').click()
+
+}
+
+}
+
+export default Login;

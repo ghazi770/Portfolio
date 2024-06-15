@@ -26,14 +26,15 @@ ln.setuserName(data.Email)
 ln.setPassword(data.password)
 ln.Login_button()
 cy.wait(50)
-cy.get('.woocommerce-MyAccount-content > :nth-child(1) > a').should('be.visible')
+
+cy.contains('Sign out').should('be.visible')
 cy.wait(50)
-cy.get('.woocommerce-MyAccount-content > :nth-child(1) > a').click();
+ln.Sign_out()
 
                 
-    })
+})
               
-    })  
+})  
 
   // Case: #002
 
