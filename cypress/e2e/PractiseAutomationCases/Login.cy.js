@@ -1,17 +1,20 @@
-import Login from "../PageObject/Login_Page"
+/// <reference types="cypress" />
+
+import Login from "../../PageObject/Login_Page"
+import Base from "../../e2e/Base/Base_class"
 
 
 describe('Login', () => 
 { 
   
-  beforeEach(() => {
-  cy.visit("https://practice.automationtesting.in/my-account/") }) 
 
-  afterEach(() => {
-  cy.reload() })  
-
-
+  const base= new Base();
   const ln=new Login();
+
+// contain Each block 
+
+base.Open_url()
+base.Reload_Page()
 
   // Case: #001
 

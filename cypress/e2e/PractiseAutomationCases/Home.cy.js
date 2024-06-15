@@ -1,4 +1,4 @@
-import HomePage from "../PageObject/Home_Page"
+import HomePage from "../../PageObject/Home_Page"
 
 
 describe('Home', () => 
