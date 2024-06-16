@@ -1,97 +1,101 @@
+/// <reference types="cypress" />
+
 import Registration from "../../PageObject/Registration_Page";
+import Base from "../../e2e/Base/Base_class"
+
 
 describe('Registeration', () => 
 { 
   
-beforeEach(() => {
-cy.visit("https://practice.automationtesting.in/my-account/") }) 
+const randomEmail = `test${Math.floor(Math.random() * 100000)}@mailinator.com`;  
+const base= new Base();
+const reg=new Registration();
 
-afterEach(() => {
-cy.reload() }) 
+// contain Each block 
 
-  const ln=new Registration();
+base.Open_url()
+base.Reload_Page()
 
 
-  // Case: #002
 
-it.only('Registeration with Empty Email ', () => {
-        
-  cy.fixture("practiceautomationtesting").then((data)=>{
+// Case: #001
 
-  ln.settxtuserEmail(data.Incorrect_email)
-  ln.set_Password(data.Incorrect_passwords)
-  ln.regis_button()
-  cy.wait(50)
-  cy.get('.woocommerce-error > li').
-   should('have.text','Error: Please enter an account password.');
-              
-  })
-            
-  })
+it('Registeration -Sign In', () => {
+
+cy.fixture("practiceautomationtesting").then((data)=>{
+data.Email=randomEmail  
+reg.settxtuserEmail(randomEmail)
+reg.set_Password()
+cy.wait(5000)    
+reg.set_Password2()
+reg.regis_button_click()
+cy.wait(50)
+cy.contains('Sign out').should('be.visible').click()
+
+                    
+})  
  
+            
+})
 
 
+// Case: #002
 
+it('Registeration -Invalid email Id', () => {
+
+reg.Invalid_email()
+reg.set_Password()
+cy.wait(5000)    
+reg.set_Password2()
+reg.regis_button_click()
+cy.wait(50)
+reg.Email_error()
+                
+  })
+   
  // Case: #003
 
- it('Registeration with Empty Email ', () => {
+it('Registeration with Empty Email ', () => {
         
-  cy.fixture("practiceautomationtesting").then((data)=>{
-  ln.settxtuserEmail(data.set_Password)
-  ln.regis_button()
-  cy.wait(50)
-  cy.get('.woocommerce-error > li').
-   should('have.text','Error: Please enter an account password.');
+
+reg.set_Password()
+cy.wait(5000)    
+reg.set_Password2()
+reg.regis_button_click()
+cy.wait(50)
+cy.get('.woocommerce-error > li').
+should('have.text','Error: Please provide a valid email address.');
               
-  })
+})
             
-  })
 
-  // Case: #004
+// Case: #004
 
-  it('Registeration with Empty Password ', () => {
+it('Registeration with Empty Password ', () => {
         
-    cy.fixture("practiceautomationtesting").then((data)=>{
-    ln.settxtuserEmail(data.Incorrect_email)
-    ln.regis_button()
-    cy.wait(50)
-    cy.get('.woocommerce-error > li').
-     should('have.text','Error: Please enter an account password.');
+cy.fixture("practiceautomationtesting").then((data)=>{
+reg.settxtuserEmail(data.Incorrect_email)
+reg.regis_button_click()
+cy.wait(50)
+cy.get('.woocommerce-error > li').
+should('have.text','Error: Please enter an account password.');
                 
-    })
+})
               
-    })
+})
 
 
  // Case: #005 
 
 it ('Registeration with Empty Email_Id & Password ', () => {
 
-cy.fixture("practiceautomationtesting").then((data)=>{
-ln.regis_button()
+reg.regis_button_click()
 cy.wait(50)
 cy.get('.woocommerce-error > li').
 should('have.text','Error: Please provide a valid email address.');                
-})
+
                   
 })
 
-// it ('Registeration with Empty Email_id & Password', () => {
 
-// const randomEmail = `test${Math.floor(Math.random() * 100000)}@mailinator.com`;    
-// //data.Email=randomEmail
-// cy.fixture("practiceautomationtesting").then((data)=>{
-// ln.settxtuserEmail(randomEmail)
-// ln.set_Password(data.Strong)
-// cy.wait(50)
-// //cy.get('.woocomerce-FormRow > .woocommerce-Button').click()
-// //ln.regis_button()
-// //cy.wait(50)
-                
-//     })
-              
-//     })  
-
-
-
-  })
+})
