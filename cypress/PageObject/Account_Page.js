@@ -32,6 +32,15 @@ cy.get('.woocommerce-MyAccount-navigation-link--customer-logout > a').click()
 //cy.get(this.link_logOut).click()   
 
 }
+
+// Click on Order option
+
+Click_order()
+{
+
+cy.contains('Orders').click()
+
+}
                 
 
 }
